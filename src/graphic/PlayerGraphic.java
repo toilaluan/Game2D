@@ -9,31 +9,37 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.nio.Buffer;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class PlayerGraphic extends Entity {
-    Player player;
-    GamePanel gp;
+	Player player;
+	GamePanel gp;
 	KeyHandler keyH;
-    BufferedImage run0, run1, run2, run3, run4, run5;
+	BufferedImage run0, run1, run2, run3, run4, run5;
 	BufferedImage run_back0, run_back1, run_back2, run_back3, run_back4, run_back5;
+	BufferedImage attack0,attack1, attack2, attack3,attack4 ;
+
+	ArrayList<BufferedImage> attackImageList;
 	BufferedImage step_down, step_up;
-    public PlayerGraphic(Player p, GamePanel gp, KeyHandler k){
-        this.player = p;
+	public PlayerGraphic(Player p, GamePanel gp, KeyHandler k){
+		attackImageList = new ArrayList<>();
+		this.player = p;
 		this.keyH = k;
-        this.gp = gp;
+		this.gp = gp;
 		getEntityImage();
-    }
-    public BufferedImage getImage(String path){
+		getAttackImage();
+	}
+	public BufferedImage getImage(String path){
 		BufferedImage bImage = null;
-        try{
+		try{
 			bImage = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(path)));
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return bImage;
-    }
-    public void getEntityImage(){
+	}
+	public void getEntityImage(){
 //        up1 = getImage("/player/up1.png");
 //        up2 = getImage("/player/up2.png");
 //        down1 = getImage("/player/down1.png");
@@ -58,27 +64,48 @@ public class PlayerGraphic extends Entity {
 
 		step_down = getImage("/player/adventurer-idle-00.png");
 		step_up = getImage("/player/adventurer-idle-01.png");
-    }
-
+	}
+	public void getAttackImage(){
+		attack0=getImage("/player/adventurer-attack1-00.png");
+		attack1=getImage("/player/adventurer-attack1-01.png");
+		attack2=getImage("/player/adventurer-attack1-02.png");
+		attack3=getImage("/player/adventurer-attack1-03.png");
+		attack4=getImage("/player/adventurer-attack1-04.png");
+		attackImageList.add(attack0);
+		attackImageList.add(attack1);
+		attackImageList.add(attack2);
+		attackImageList.add(attack3);
+		attackImageList.add(attack4);
+	}
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
 //		g2.setColor(Color.white);
 //		g2.fillRect(x, y, gp.tileSize, gp.tileSize);
-		switch(player.direction) {
-		case "right":
-			image = imageSelector(run0, run1, run2, run3, run4, run5);
-			break;
-		case "down":
-			image = step_down;
-			break;
-		case "left":
-			image = imageSelector(run_back0, run_back1, run_back2, run_back3, run_back4, run_back5);
-			break;
-		case "up":
-			image = step_up;
-			break;
+		if(this.player.attack==1){
+			System.out.println(this.player.attack);
+			for(int i=0;i<attackImageList.size();i++){
+				g2.drawImage(attackImageList.get(i), player.screenX, player.screenY, gp.tileSize, gp.tileSize, null);
+			}
+			this.player.attack=0;
 		}
-		g2.drawImage(image, player.screenX, player.screenY, gp.tileSize, gp.tileSize, null);
+		else{
+
+			switch(player.direction) {
+				case "right":
+					image = imageSelector(run0, run1, run2, run3, run4, run5);
+					break;
+				case "down":
+					image = step_down;
+					break;
+				case "left":
+					image = imageSelector(run_back0, run_back1, run_back2, run_back3, run_back4, run_back5);
+					break;
+				case "up":
+					image = step_up;
+					break;
+			}
+			g2.drawImage(image, player.screenX, player.screenY, gp.tileSize, gp.tileSize, null);
+		}
 	}
 
 	public BufferedImage imageSelector(BufferedImage run0, BufferedImage run1, BufferedImage run2, BufferedImage run3, BufferedImage run4, BufferedImage run5) {

@@ -20,6 +20,7 @@ public class Player extends Entity {
 	public int heroNum;
 	public int screenX;
 	public int screenY;
+	public int attack;
 
 
 	public Player(GamePanel gp, KeyHandler KeyH, int attack, int defense) {
@@ -49,7 +50,7 @@ public class Player extends Entity {
 	}
 
 	public void update() {
-	if (keyH.upPressed || keyH.downPressed || keyH.rightPressed || keyH.leftPressed){
+	if (keyH.upPressed || keyH.downPressed || keyH.rightPressed || keyH.leftPressed|| keyH.spacePressed){
 
 		if (keyH.upPressed) {
 			direction = "up";
@@ -62,6 +63,9 @@ public class Player extends Entity {
 		}
 		if (keyH.leftPressed) {
 			direction = "left";
+		}
+		if(keyH.spacePressed){
+			attack=1;
 		}
 		heroCounter += 1;
 		if (heroCounter > 10) {
