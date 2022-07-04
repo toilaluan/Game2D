@@ -26,11 +26,11 @@ public class Entity {
 	public int Defense;
 	public BufferedImage up1, up2, down1, down2, right1, right2, left1, left2;
 	public String direction;
-
 	public Rectangle solidArea;
 
 	public int solidAreaDefaultX, solidAreaDefaultY;
-	public boolean colissionOn = false;
+	public static boolean colissionOnCol = false;
+	public static boolean colissionOnRoW = false;
 
 	public ArrayList<OBJ> item;
 }

@@ -11,7 +11,7 @@ public class OBJ_SpeedPotion extends OBJ{
             e.printStackTrace();
         }
     }
-    public static int speedBonus = 4;
+    public static int speedBonus = 1;
 }
 
 

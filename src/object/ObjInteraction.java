@@ -22,6 +22,10 @@ public class ObjInteraction {
 					Player.checkSpeedPT = 1;
 					gp.obj.remove(gp.obj.get(i));
 					break;
+				case "HpPotion":
+					Player.checkSpeedPT = 1;
+					gp.obj.remove(gp.obj.get(i));
+					break;
 			}
 		}
 	}
