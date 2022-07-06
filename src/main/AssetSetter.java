@@ -14,11 +14,11 @@ public class AssetSetter {
     public void setObject(ArrayList<OBJ> obj){
         OBJ key_1 = new OBJ_key();
         key_1.worldX = gp.tileSize * 19;
-        key_1.worldY = gp.tileSize * 5;
+        key_1.worldY = gp.tileSize * 25;
         obj.add(key_1);
         OBJ door_1 = new OBJ_Door();
-        door_1.worldX = gp.tileSize * 19;
-        door_1.worldY = gp.tileSize * 10;
+        door_1.worldX = gp.tileSize * 27;
+        door_1.worldY = gp.tileSize * 3;
         obj.add(door_1);
         int ranNum = new Random().nextInt(3);
         if(Monster.killMonster()){

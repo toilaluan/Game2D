@@ -14,20 +14,16 @@ public class ObjInteraction {
 					break;
 				case "Door":
 					if (Player.hasKey) {
-						for (int k = 0; k < gp.player.item.size(); k++){
-							if ( gp.player.item.get(k) != null){
-								gp.tileM.getMap("/maps/Rung.txt");
-								gp.player.item.remove(k);
-							}
+						gp.obj.remove(gp.obj.get(i));
+						gp.tileM.getMap("/maps/Rung.txt");
+						System.out.println("Move to next map!");
 						}
-					}
 					break;
 				case "SpeedPotion":
 					Player.checkSpeedPT = 1;
 					gp.obj.remove(gp.obj.get(i));
 					break;
 				case "HpPotion":
-					Player.checkSpeedPT = 1;
 					gp.obj.remove(gp.obj.get(i));
 					break;
 			}

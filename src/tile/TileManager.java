@@ -45,13 +45,11 @@ public class TileManager {
             tile[20] = new Tile();
             tile[21] = new Tile();
             tile[22] = new Tile();
-
-
             tile[0].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/road00.png")));
             tile[1].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/water00.png")));
             tile[2].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/grass00.png")));
             tile[3].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/wall.png")));
-            tile[4].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/wall.png")));
+            tile[4].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/floor01.png")));
             tile[5].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/wall.png")));
             tile[6].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/cau16.png")));
             tile[7].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/da16.png")));
@@ -72,11 +70,17 @@ public class TileManager {
 
 
 
-
+            tile[4].collision = true;
             tile[7].collision = true;
             tile[8].collision = true;
             tile[9].collision = true;
             tile[10].collision = true;
+            tile[15].collision = true;
+            tile[17].collision = true;
+            tile[18].collision = true;
+            tile[19].collision = true;
+            tile[20].collision = true;
+            tile[16].collision = true;
 
         }catch (Exception e){
             e.printStackTrace();

@@ -80,7 +80,7 @@ public class ColissionChecker {
                     break;
             }
         }
-        if (Player.checkUp) {
+        if (Player.checkUp||Player.checkLeft||Player.checkRight) {
             switch (entity.direction) {
                 case "up":
                     entityTopRow = (entityTopWorldY - entity.speeds()) / gp.tileSize;
