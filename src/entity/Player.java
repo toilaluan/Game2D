@@ -17,21 +17,24 @@ import object.ObjInteraction;
 public class Player extends Entity {
 
 	public static boolean hasKey = false;
-	public static boolean checkUp,checkDown,checkLeft,checkRight;
-	GamePanel gp;
 	KeyHandler keyH;
 	public int heroCounter;
 	public int heroNum;
 	public int screenX;
 	public int screenY;
+	public static boolean checkUp;
+	public static boolean checkDown;
+	public static boolean checkLeft;
+	public static boolean checkRight;
 	public static int checkSpeedPT = 0;
 
 	public Player(GamePanel gp, KeyHandler KeyH, int attack, int defense) {
+		super(gp);
 		solidArea = new Rectangle();
 		solidArea.x = 8;
 		solidArea.y = 16;
-		solidArea.width = 30;
-		solidArea.height = 15;
+		solidArea.width = 32;
+		solidArea.height = 32;
 		solidAreaDefaultX = solidArea.x;
 		solidAreaDefaultY = solidArea.y;
 		this.gp = gp;
@@ -56,22 +59,22 @@ public class Player extends Entity {
 
 		if (keyH.upPressed) {
 			direction = "up";
-			checkUp = true;
+			checkUp=true;
 		}
-		else checkUp=false;
+		else checkUp = false;
 		if (keyH.downPressed) {
 			direction = "down";
-			checkDown = true;
+			checkDown=true;
 		}
 		else checkDown=false;
 		if (keyH.rightPressed) {
 			direction = "right";
-			checkRight = true;
+			checkRight=true;
 		}
-		else checkRight=false;
+		else checkRight = false;
 		if (keyH.leftPressed) {
 			direction = "left";
-			checkLeft = true;
+			checkLeft=true;
 		}
 		else checkLeft=false;
 		heroCounter += 1;
@@ -87,21 +90,22 @@ public class Player extends Entity {
 	gp.cChecker.checkTile(this);
 	int objIndex = gp.cChecker.checkObject(this, true);
 		ColissionChecker.interactor.ObjInteraction(gp,objIndex);
-	if (!colissionOnRoW || !colissionOnCol){
+	if (!colissionOnRoW|| !colissionOnCol){
 		if (keyH.upPressed || keyH.downPressed || keyH.rightPressed || keyH.leftPressed){
-		  if(!colissionOnCol){
-			if (keyH.upPressed) {
+		    if(!colissionOnCol){
+			    if (keyH.upPressed) {
 				worldY -= Entity.speeds();
 			}
-			if (keyH.downPressed) {
+			    if (keyH.downPressed) {
 				worldY += Entity.speeds();
 			}
 		  }
 			if(!colissionOnRoW){
-			if (keyH.rightPressed) {
+
+			    if (keyH.rightPressed) {
 				worldX += Entity.speeds();
 			}
-			if (keyH.leftPressed) {
+			    if (keyH.leftPressed) {
 				worldX -= Entity.speeds();
 			}
 			}

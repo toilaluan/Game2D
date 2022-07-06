@@ -12,6 +12,7 @@ public class Monster extends Entity {
     public int screenX;
     public int screenY;
     public Monster(GamePanel gp, KeyHandler keyH){
+        super(gp);
         this.gp = gp;
         this.keyH = keyH;
         setDefaultValue();

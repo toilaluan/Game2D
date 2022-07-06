@@ -69,7 +69,7 @@ public class TileManager {
             tile[22].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/topwatergrass_22.png")));
 
 
-
+            tile[11].collision = false;
             tile[4].collision = true;
             tile[7].collision = true;
             tile[8].collision = true;
